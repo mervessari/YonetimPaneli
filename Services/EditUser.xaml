@@ -1,0 +1,57 @@
+﻿<Window x:Class="YonetimPaneli.Services.EditUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:YonetimPaneli.Services"
+        Title="Edit User" Height="440" Width="700">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" VerticalAlignment="Top">
+            <TextBlock Text="Kullanıcı Adı:" FontSize="16" FontWeight="Bold" Foreground="#FFBE71E5" Margin="10"/>
+            <TextBox Text="{Binding Username}"  Margin="5"/>
+            <TextBlock Text="Rol:" FontSize="16" Margin="10"  FontWeight="Bold" Foreground="#FFBE71E5"/>
+
+            <!-- Rol ComboBox -->
+            <ComboBox x:Name="RoleComboBox" 
+                      ItemsSource="{Binding AvailableRoles}" 
+                      SelectedItem="{Binding Role}" 
+                      Margin="10" 
+                      IsEnabled="{Binding IsAdmin}">
+                <ComboBoxItem Content="Admin"/>
+                <ComboBoxItem Content="Standard"/>
+            </ComboBox>
+           
+            <!-- Admin değilse ComboBox devre dışı olacak -->
+
+            <TextBlock Text="Adı:" FontSize="16" Margin="10"  FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding FirstName}" Margin="5"/>
+            <TextBlock Text="Soyadı:" FontSize="16" Margin="10"  FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding LastName}" Margin="5"/>
+            <TextBlock Text="Parola:" FontSize="16" Margin="10"  FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding Password}" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+            <TextBlock Text="Yaş:"  FontSize="16" Margin="10"   FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding Age}" Margin="5"/>
+            <TextBlock Text="E-posta:" FontSize="16" Margin="10"   FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding Email}" Margin="10"/>
+            <TextBlock Text="Doğum Tarihi:" FontSize="16" Margin="10"   FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding BirthDate}" Margin="5"/>
+            <TextBlock Text="Okul:" FontSize="16" Margin="10"  FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding School}" Margin="5"/>
+            <TextBlock Text="Çalışma Deneyimi:" FontSize="16" Margin="10"  FontWeight="Bold" Foreground="#FFBE71E5"/>
+            <TextBox Text="{Binding Experience}" Margin="5"/>
+        </StackPanel>
+
+        <Button Content="Kaydet" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  FontWeight="Bold" Foreground="White" Background="#FFBE71E5" HorizontalAlignment="Center" Width="100" Margin="20" Click="SaveButton_Click"/>
+    </Grid>
+</Window>
